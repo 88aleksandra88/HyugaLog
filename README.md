@@ -1,22 +1,25 @@
 # HyugaLog 🧠🔥
 
-**HyugaLog** is a cyber journal project built for documenting mindset, tools, insights, and thoughts.
+**HyugaLog** is a personal cyber journal crafted by a Red Teamer with a neurospicy edge.  
+It documents mindset, tools, field insights, and tactical thinking from a practical perspective — no fluff, no cringe, just pure signal.
 
-> No fluff. No cringe. Just raw cyber thoughts and practical notes.
+🔗 **Live version:** [https://88aleksandra88.github.io/HyugaLog/](https://88aleksandra88.github.io/HyugaLog/)
+
+---
 
 ## 🧩 What's Inside
 
-- ⚔️ Articles on Red Team tactics, tools, and philosophy
-- 🧠 Personal reflections and mental ops
-- 🛠️ Minimalist HTML/CSS for full control (and offline usage)
+- ⚔️ Red Team & Blue Team reflections
+- 🧠 Cybersecurity tools breakdowns
+- 🧰 Hardware recommendations (with real field-tested machines)
+- 🕶️ Minimalist hacker aesthetic (dark mode, no distractions)
+- 💬 Future articles on OSINT, mindset, and unconventional tactics
 
-## 📦 How to use
+---
 
-1. Clone or download the repo
-2. Push it to GitHub
-3. Go to your repo → Settings → Pages → Select "main branch / root"
-4. Access your log at `https://yourusername.github.io/HyugaLog/`
+## 🚀 How to use
 
-## 📎 License
-
-MIT – Because knowledge should stay free.
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/88aleksandra88/HyugaLog.git
+   cd HyugaLog

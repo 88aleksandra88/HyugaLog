@@ -1,6 +1,6 @@
 # HyugaLog 🧠🔥
 
-**HyugaLog** is a cyber journal project built for documenting mindset, tools, insights, and thoughts from the perspective of a Red Team operator with a neurodivergent edge.
+**HyugaLog** is a cyber journal project built for documenting mindset, tools, insights, and thoughts.
 
 > No fluff. No cringe. Just raw cyber thoughts and practical notes.
 

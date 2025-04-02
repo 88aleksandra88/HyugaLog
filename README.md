@@ -1,6 +1,6 @@
 # HyugaLog 🧠🔥
 
-**HyugaLog** is a personal cyber journal crafted by a Red Teamer with a neurospicy edge.  
+**HyugaLog** is a personal cyber journal crafted by a Red Teamer aprentice with a neurospicy edge.  
 It documents mindset, tools, field insights, and tactical thinking from a practical perspective — no fluff, no cringe, just pure signal.
 
 🔗 **Live version:** [https://88aleksandra88.github.io/HyugaLog/](https://88aleksandra88.github.io/HyugaLog/)

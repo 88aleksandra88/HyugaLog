@@ -6,19 +6,12 @@
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <header>
+  <div id="bootlog" style="font-family: monospace; white-space: pre; color: #00ff88; background: #000; padding: 1em; font-size: 0.85em; line-height: 1.4em; height: 300px; overflow: hidden; border-radius: 4px;"></div>
+ <header>
     <h1>HyugaLog</h1>
     <p><i>Red Team Notes & Cyber Mindset</i></p>
   </header>
   <main>
-    <pre>
-      __  __ __   __  ____   ____   ____ 
-     / / / // /  / / / __ \ / __ \ / __ \
-    / /_/ // /__/ / / /_/ // /_/ // / / /
-   / __  //_____/  \____/ \____//_/ /_/ 
-  /_/ /_/                                
-  </pre>
-    
     <div id="typewriter" style="font-size:1.2em; font-weight:bold; margin-top:1em;"></div>
   
     <section>
@@ -82,7 +75,36 @@
       const random = Math.floor(Math.random() * phrases.length);
       document.querySelector(".quote").textContent = phrases[random];
     }
+    const bootLines = [
+    "[ OK ] Initializing HyugaLog v1.0",
+    "[ OK ] Mounting /redteam mindset",
+    "[ OK ] Loading operator environment",
+    "[ OK ] Injecting focus module...",
+    "[ OK ] Establishing quiet connection...",
+    "[ OK ] Importing notebooks: cyber_ops.md, mental_ops.log",
+    "[ WARN ] Motivation system: unstable – fallback: discipline.mode",
+    "[ OK ] Tracking targets – passive scan active",
+    "[ OK ] Ready. Entering Observation Mode...",
+    "[ INFO ] Welcome back, operator."
+  ];
+
+  const bootlogEl = document.getElementById("bootlog");
+  let currentLine = 0;
+
+  function printBootLine() {
+    if (currentLine < bootLines.length) {
+      bootlogEl.textContent += bootLines[currentLine] + "\n";
+      currentLine++;
+      setTimeout(printBootLine, 300); // ajustable
+    }
+  }
+
+  window.onload = () => {
+    printBootLine();
+    setRandomQuote(); // Si tu utilises toujours les quotes
+  };
   </script>
+  
   
   </body>
 </html>

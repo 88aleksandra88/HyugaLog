@@ -12,7 +12,7 @@ It documents mindset, tools, field insights, and tactical thinking from a practi
 - ⚔️ Red Team & Blue Team reflections
 - 🧠 Cybersecurity tools breakdowns
 - 🧰 Hardware recommendations (with real field-tested machines)
-- 🕶️ Minimalist hacker aesthetic (dark mode, no distractions)
+- 🕶️ Minimalist aesthetic (dark mode, no distractions)
 - 💬 Future articles on OSINT, mindset, and unconventional tactics
 
 ---

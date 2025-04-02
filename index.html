@@ -11,10 +11,83 @@
     <p><i>Red Team Notes & Cyber Mindset</i></p>
   </header>
   <main>
-    <h2>Latest Articles</h2>
-    <ul>
-      <li><a href="articles/thinkpad-cybersecurity.html">ThinkPads in Cybersecurity – Not a Meme, a Weapon</a></li>
-    </ul>
+    <pre>
+       _______  __    __  __    __   _______   ______   _______   _______ 
+      /       \|  \  |  \|  \  |  \ /       \ /      \ |       \ |       \
+     |  $$$$$$$| $$  | $$| $$  | $$|  $$$$$$$|  $$$$$$\| $$$$$$$\| $$$$$$$\
+     | $$      | $$  | $$| $$  | $$ \$$    \ | $$__| $$| $$__/ $$| $$__| $$
+     | $$      | $$  | $$| $$  | $$ _\$$$$$$\| $$    $$| $$    $$| $$    $$
+     | $$_____ | $$__/ $$| $$__/ $$|  \__| $$| $$$$$$$$| $$$$$$$\| $$$$$$$\
+      \$$     \ \$$    $$ \$$    $$ \$$    $$ \$$     \| $$__/ $$| $$__/ $$
+       \$$$$$$$  \$$$$$$   \$$$$$$   \$$$$$$   \$$$$$$$ \$$    $$ \$$    $$
+                                                         \$$$$$$  \$$$$$$ 
+  
+    </pre>
+  
+    <div id="typewriter" style="font-size:1.2em; font-weight:bold; margin-top:1em;"></div>
+  
+    <section>
+      <h2>About HyugaLog</h2>
+      <p>
+        <strong>HyugaLog</strong> is not about showing off skills — it's about crafting systems of thought.
+        It’s a mental operations log for asymmetric minds navigating security, complexity, and control.
+      </p>
+      <p>
+        Written for the quietly obsessed, the meticulous observer, the one who doesn’t look loud but knows exactly where to strike.
+      </p>
+    </section>
+  
+    <section>
+      <h2>🗂️ Recent Logs</h2>
+      <ul>
+        <li><a href="articles/thinkpad-cybersecurity.html">ThinkPads in Cybersecurity – Not a Meme, a Weapon</a></li>
+        <li><em>Incoming…</em> Mapping memory: mindset models for persistent operators</li>
+        <li><em>Incoming…</em> The Operator's Quiet Toolkit (OSINT / recon / passive frameworks)</li>
+      </ul>
+    </section>
+  
+    <section>
+      <h2>🧭 Principles</h2>
+      <p>
+        No hype. No circus. Just thoughts forged under pressure, refined through repetition.
+        Strategy over noise. Signal over speed. Persistence over bursts.
+      </p>
+      <p class="quote" style="font-style: italic;"></p>
+    </section>
   </main>
-</body>
+  <script>
+    // Typewriter effect
+    const text = "Welcome back, operator.";
+    let index = 0;
+    function type() {
+      if (index < text.length) {
+        document.getElementById("typewriter").innerHTML += text.charAt(index);
+        index++;
+        setTimeout(type, 60);
+      }
+    }
+    window.onload = () => {
+      type();
+      setRandomQuote();
+    };
+  
+    // Random quote logic
+    function setRandomQuote() {
+      const phrases = [
+        "Routine is a trap. Systems are the escape.",
+        "Precision is louder than noise.",
+        "You don't need to be consistent — you need to return.",
+        "The mind maps, the hands execute. One fails without the other.",
+        "You move silently because your impact doesn’t need permission.",
+        "Overwhelm is a symptom. Focus is the countermeasure.",
+        "Read the system. Control the flow. Rewrite the rules.",
+        "Tools don’t make the operator. Discipline does.",
+        "A plan is just a signal. Adaptation is the protocol."
+      ];
+      const random = Math.floor(Math.random() * phrases.length);
+      document.querySelector(".quote").textContent = phrases[random];
+    }
+  </script>
+  
+  </body>
 </html>

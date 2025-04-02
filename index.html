@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ThinkPads in Cybersecurity</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>HyugaLog</h1>
+    <p><i>ThinkPads in Cybersecurity – Not a Meme, a Weapon</i></p>
+  </header>
+  <main>
+    <article>
+
+      <h1>Why ThinkPads Dominate in Cybersecurity</h1>
+
+      <p>In cybersecurity, tools matter. But your physical machine — the one that hosts your entire workflow, your VM labs, your scripts, your payloads — matters even more. Many of us don’t just “use” a machine; we configure it, adapt it, weaponize it.</p>
+
+      <p>So why do so many pentesters, Red Teamers, and privacy-conscious pros keep coming back to the <strong>Lenovo ThinkPad</strong> line?</p>
+
+      <h2>🧠 It’s Not About Aesthetics — It’s About Control</h2>
+
+      <p>Forget the meme of the "hacker in a hoodie". ThinkPads are everywhere in the infosec world because they deliver <em>practical power</em> with <strong>maximum freedom</strong> and <strong>minimal friction</strong>. Here's what sets them apart:</p>
+
+      <ul>
+        <li><strong>100% Linux-compatible</strong>: No random Wi-Fi chipset issues, no weird GPU driver bugs, no BIOS restrictions. Kali, Ubuntu, Arch — it all works, out of the box.</li>
+        <li><strong>Modular and repairable</strong>: You can replace the RAM, SSD, keyboard, battery — even the screen — with just a screwdriver. No glue. No DRM. Just parts.</li>
+        <li><strong>Durable by design</strong>: Originally built for business and military-grade endurance, these machines <em>survive real-world use</em>. They're tough, discreet, and built to last.</li>
+        <li><strong>Coreboot-friendly</strong>: Want firmware freedom? Models like the X220, T430, and even some T480 units are Coreboot compatible, meaning you can strip proprietary firmware and go full open-source.</li>
+        <li><strong>Affordable and accessible</strong>: You can build a serious cybersec lab machine for under €400. Compare that to flashy consumer ultrabooks that break when you look at them wrong.</li>
+      </ul>
+
+      <h2>🛠️ But Which ThinkPad Should You Choose?</h2>
+      <p>It depends on your mission profile. Here's a deep dive into 6 solid models across roles in cybersecurity.</p>
+
+      <table border="1" cellspacing="0" cellpadding="6">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Cyber Role</th>
+            <th>CPU Gen</th>
+            <th>RAM/SSD</th>
+            <th>Upgradability</th>
+            <th>Coreboot?</th>
+            <th>Weight</th>
+            <th>Price</th>
+            <th>Why It Rocks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>T480</strong></td>
+            <td>Red Team / Generalist</td>
+            <td>i5/i7 8th Gen</td>
+            <td>16–32GB / 512GB–1TB</td>
+            <td>Full (RAM, SSD, battery)</td>
+            <td>Partial</td>
+            <td>1.6 kg</td>
+            <td>€300–€400</td>
+            <td>Balance of power, cost, and freedom. Best all-rounder.</td>
+          </tr>
+          <tr>
+            <td><strong>X270</strong></td>
+            <td>Mobile Red Team Ops</td>
+            <td>i5 6th/7th Gen</td>
+            <td>Up to 16GB / 512GB</td>
+            <td>RAM/SSD/Battery</td>
+            <td>Yes</td>
+            <td>1.3 kg</td>
+            <td>€200–€300</td>
+            <td>Ultra portable, great battery. Perfect for covert ops.</td>
+          </tr>
+          <tr>
+            <td><strong>T14 Gen 1 (AMD)</strong></td>
+            <td>Blue Team / DevSecOps</td>
+            <td>Ryzen 5/7 4000 series</td>
+            <td>16–32GB / 1TB</td>
+            <td>RAM (1 slot) + SSD</td>
+            <td>No</td>
+            <td>1.5 kg</td>
+            <td>€500–€700</td>
+            <td>Modern power, great for defensive toolkits and logs.</td>
+          </tr>
+          <tr>
+            <td><strong>X1 Carbon Gen 7+</strong></td>
+            <td>Executive Red Team / On-the-go exec</td>
+            <td>i5/i7 8th–10th Gen</td>
+            <td>16GB / 512GB</td>
+            <td>SSD only</td>
+            <td>No</td>
+            <td>~1.1 kg</td>
+            <td>€600–€900</td>
+            <td>Slim, premium, silent. A stealth laptop with power.</td>
+          </tr>
+          <tr>
+            <td><strong>T430</strong></td>
+            <td>Legacy Testing / Coreboot Dev</td>
+            <td>i5/i7 3rd Gen</td>
+            <td>16GB / 256–512GB</td>
+            <td>Full</td>
+            <td>Yes (Coreboot King)</td>
+            <td>2.1 kg</td>
+            <td>€100–€200</td>
+            <td>Perfect for firmware freedom, retrofitted toolchains.</td>
+          </tr>
+          <tr>
+            <td><strong>L480</strong></td>
+            <td>Budget Blue Team / Students</td>
+            <td>i5 8th Gen</td>
+            <td>8–16GB / 256–512GB</td>
+            <td>RAM + SSD</td>
+            <td>No</td>
+            <td>1.7 kg</td>
+            <td>€220–€300</td>
+            <td>Underrated. Great for analysts, log parsing, scripting.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>⚠️ Machines to Avoid for Linux & Cybersecurity</h2>
+
+<p>Not all laptops are equal when it comes to Linux. Some might boot, sure — but they’ll fight back. Here are some machines that you should <strong>avoid</strong> if you want a stable, controllable environment for cybersecurity workflows:</p>
+
+<ul>
+  <li><strong>MSI Laptops</strong> – Known for inconsistent firmware and kernel-level bugs. Many have poor ACPI tables, broken suspend/resume behavior, or exotic Wi-Fi chipsets (like Realtek 8821CE) that require patching or manual DKMS drivers. You'll waste time compiling instead of hacking.</li>
+  <li><strong>HP Pavilion & HP Envy</strong> – Locked-down BIOS, strange hybrid GPU switching (NVIDIA + Intel), and problematic Secure Boot implementations. Keyboard backlight issues and fan control bugs are common under Linux.</li>
+  <li><strong>Razer Blade</strong> – Looks cool, but terrible Linux support. High-DPI scaling issues, proprietary RGB control software, and flaky audio or touchpad drivers. Firmware updates are Windows-only.</li>
+  <li><strong>Surface Devices</strong> – Microsoft's own hardware resists Linux hard. T2-style security chips, touchscreen instability, nonstandard bootloaders, and lots of trial-and-error to get basic stuff working.</li>
+  <li><strong>Anything with NVIDIA Optimus (unless you’re experienced)</strong> – Hybrid graphics = pain. Linux can support it, but managing GPU switching is fragile, messy, and often requires third-party scripts or `nvidia-prime` hacks.</li>
+  <li><strong>New MacBooks (M1/M2)</strong> – Apple Silicon is amazing... for macOS only. As of now, no full support for Kali or Parrot on M1/M2 without major compromise.</li>
+</ul>
+
+<p><strong>General advice:</strong> Avoid laptops with Realtek Wi-Fi, closed BIOS, or hybrid GPU unless you're ready to troubleshoot kernel modules. You want tools, not headaches.</p>
+
+
+      <h2>📌 Final Word</h2>
+      <p>The right ThinkPad depends on your mindset and your role. Pentester in the field? Go T480 or X270. Defensive ops? Look at T14 or L480. Need to hack your BIOS for sport? Grab a T430 and go Coreboot wild.</p>
+
+      <p>Whichever path you choose, remember: specs come and go. Control stays. And in the world of cybersecurity, control is everything.</p>
+
+      <p><em>– Hyuga</em></p>
+
+    </article>
+  </main>
+</body>
+</html>

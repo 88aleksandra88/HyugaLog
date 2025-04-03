@@ -1,0 +1,19 @@
+#!/bin/sh
+# Hyuga Init Script — Run once, stay active
+
+echo "[*] Injecting signal: rage.doux"
+echo "[*] Mounting memory: fragmented"
+echo "[*] Loading kernel: neurospicy-1.0"
+echo "[*] Booting reality layer... failed"
+echo "[*] Entering fallback mode: writer.log"
+
+echo ""
+echo ">> Welcome back, operator"
+echo ">> You are the anomaly."
+echo ">> You are the signal."
+
+# Keep looping until shutdown
+while true; do
+  echo "...thinking"
+  sleep infinity
+done

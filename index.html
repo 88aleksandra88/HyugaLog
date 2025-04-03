@@ -2,150 +2,78 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>HyugaLog</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
-</head>
-<body>
- <header>
-    <h1>HyugaLog</h1>
-    <p><i>Red Team Notes & Cyber Mindset</i></p>
-  </header>
-  <main>
-    <div id="typewriter" style="font-size:1.2em; font-weight:bold; margin-top:1em;"></div>
-    <div id="bootlog" style="font-family: monospace; white-space: pre; color: #00ff88; background: #0e0e0e; padding: 1em; font-size: 0.85em; line-height: 1.4em; height: 300px; overflow: hidden; border-radius: 4px;"></div>
+  <title>glitch.log</title>
+  <style>
+    body {
+      background: #000;
+      color: #00ff88;
+      font-family: monospace;
+      margin: 0;
+      overflow: hidden;
+    }
 
-    <section>
-      <h2>About HyugaLog</h2>
-      <p>
-        <strong>HyugaLog</strong> is not about showing off skills — it's about crafting systems of thought.
-        It’s a mental operations log for asymmetric minds navigating security, complexity, and control.
-      </p>
-      <p>
-        Written for the quietly obsessed, the meticulous observer, the one who doesn’t look loud but knows exactly where to strike.
-      </p>
-    </section>
-  
-    <section>
-      <h2>🗂️ Recent Logs</h2>
-      <ul>
-        <li><a href="articles/thinkpad-cybersecurity.html">ThinkPads in Cybersecurity – Not a Meme, a Weapon</a></li>
-        <li><a href="articles/godmode-ghostmode.html">God Mode & Ghost Mode – Ego, Fear, and Silence in Cybersecurity</a></li>
-        <li><em>Incoming…</em> The Operator's Quiet Toolkit (OSINT / recon / passive frameworks)</li>
-      </ul>
-    </section>
-  
-    <section>
-      <h2>🧭 Principles</h2>
-      <p>
-        No hype. No circus. Just thoughts forged under pressure, refined through repetition.
-        Strategy over noise. Signal over speed. Persistence over bursts.
-      </p>
-      <p class="quote" style="font-style: italic;"></p>
-    </section>
-  </main>
-  <script>
-    // Typewriter effect
-    const text = "Welcome back, operator.";
-    let index = 0;
-    function type() {
-      if (index < text.length) {
-        document.getElementById("typewriter").innerHTML += text.charAt(index);
-        index++;
-        setTimeout(type, 60);
+    .static {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif') center center / cover;
+      opacity: 0.08;
+      z-index: 0;
+    }
+
+    #terminal {
+      position: absolute;
+      white-space: pre-wrap;
+      font-size: 1em;
+      z-index: 1;
+      animation: float 20s infinite ease-in-out alternate;
+    }
+
+    @keyframes float {
+      0% {
+        top: 10%;
+        left: 5%;
+        transform: rotate(0deg);
+      }
+      25% {
+        top: 20%;
+        left: 60%;
+        transform: rotate(-1deg);
+      }
+      50% {
+        top: 50%;
+        left: 30%;
+        transform: rotate(1deg);
+      }
+      75% {
+        top: 60%;
+        left: 70%;
+        transform: rotate(-2deg);
+      }
+      100% {
+        top: 30%;
+        left: 10%;
+        transform: rotate(0.5deg);
       }
     }
-    window.onload = () => {
-      type();
-      setRandomQuote();
-    };
 
-    
-  
-    // Random quote logic
-    function setRandomQuote() {
-      const phrases = [
-        "Routine is a trap. Systems are the escape.",
-        "Precision is louder than noise.",
-        "You don't need to be consistent — you need to return.",
-        "The mind maps, the hands execute. One fails without the other.",
-        "You move silently because your impact doesn’t need permission.",
-        "Overwhelm is a symptom. Focus is the countermeasure.",
-        "Read the system. Control the flow. Rewrite the rules.",
-        "Tools don’t make the operator. Discipline does.",
-        "A plan is just a signal. Adaptation is the protocol."
-      ];
-      const random = Math.floor(Math.random() * phrases.length);
-      document.querySelector(".quote").textContent = phrases[random];
-    }
-    const bootLines = [
-    "[ OK ] Initializing HyugaLog v1.0",
-    "[ OK ] Mounting /redteam mindset",
-    "[ OK ] Loading operator environment",
-    "[ OK ] Injecting focus module...",
-    "[ OK ] Establishing quiet connection...",
-    "[ OK ] Importing notebooks: cyber_ops.md, mental_ops.log",
-    "[ WARN ] Motivation system: unstable – fallback: discipline.mode",
-    "[ OK ] Tracking targets – passive scan active",
-    "[ OK ] Ready. Entering Observation Mode...",
-    "[ INFO ] Welcome back, operator."
-  ];
-
-  const bootlogEl = document.getElementById("bootlog");
-  let currentLine = 0;
-
-  function printBootLine() {
-    if (currentLine < bootLines.length) {
-      bootlogEl.textContent += bootLines[currentLine] + "\n";
-      currentLine++;
-      setTimeout(printBootLine, 300); // ajustable
-    }
-  }
-
-  window.onload = () => {
-    printBootLine();
-    setRandomQuote(); // Si tu utilises toujours les quotes
-  };
-  </script>
-  <!-- 🔘 Mysterious Button -->
-<style>
-  #chaosBtn {
-    position: absolute;
-    padding: 8px 14px;
-    background: #00ff88;
-    color: #0e0e0e;
-    border: none;
-    font-weight: bold;
-    border-radius: 4px;
-    cursor: pointer;
-    z-index: 9999;
-    transition: transform 0.3s ease;
-  }
-
-  #chaosBtn:hover {
-    transform: scale(1.1);
-  }
-</style>
-
-<script>
-  // Create and place the button at random position
-  function spawnChaosBtn() {
-    const btn = document.createElement("button");
-    btn.id = "chaosBtn";
-    btn.innerText = "???";
-    btn.onclick = () => {
-      window.location.href = "glitch.html"; // 👉 vers la page mystérieuse
-    };
-    document.body.appendChild(btn);
-
-    const x = Math.random() * (window.innerWidth - 100);
-    const y = Math.random() * (window.innerHeight - 50);
-    btn.style.left = `${x}px`;
-    btn.style.top = `${y}px`;
-  }
-
-  window.addEventListener("load", spawnChaosBtn);
-</script>
-
-  
-  </body>
+  </style>
+</head>
+<body>
+  <div class="static"></div>
+  <div id="terminal">
+    > INIT_HYUGA.LOG<br>
+    > anomaly detected...<br>
+    > trace interrupted...<br>
+    > fallback memory engaged<br>
+    > █ system integrity: partial<br>
+    > █ operator presence: unstable<br>
+    <br>
+    > "Are you... looping again?"<br>
+    > [ESC] to exit... but nothing will.<br>
+    <br>
+    _ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █
+  </div>
+</body>
 </html>

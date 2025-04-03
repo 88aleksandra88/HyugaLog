@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>glitch.log</title>
+  <style>
+    body {
+      background: #000;
+      color: #00ff88;
+      font-family: monospace;
+      font-size: 1em;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #terminal {
+      padding: 2em;
+      white-space: pre-wrap;
+      animation: flicker 0.1s infinite alternate;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 0.95; }
+      100% { opacity: 1; }
+    }
+
+    .static {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif') center center / cover;
+      opacity: 0.08;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="static"></div>
+  <div id="terminal">
+    > INIT_HYUGA.LOG<br>
+    > anomaly detected...<br>
+    > trace interrupted...<br>
+    > fallback memory engaged<br>
+    > █ system integrity: partial<br>
+    > █ operator presence: unstable<br>
+    <br>
+    > "Are you... looping again?"<br>
+    > [ESC] to exit... but nothing will.<br>
+    <br>
+    _ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █
+  </div>
+</body>
+</html>

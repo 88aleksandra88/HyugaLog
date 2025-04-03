@@ -1,7 +1,8 @@
 # HyugaLog
 
 > Welcome, operator.  
-> This isn’t a repo. This is a breach.
+> You just stepped into something else.  
+> 👉 [Enter the log](https://88aleksandra88.github.io/HyugaLog/)
 
 ---
 
@@ -20,10 +21,10 @@ You're just... tracing the source.
 
 ### 🌀 What's in the vortex?
 
-- `/logs/` — personal dumps, half-code, half-brain.
-- `/ops/` — pentest tools, notes, field intelligence.
-- `/echo/` — thoughts that loop, then echo back.
-- `/404/` — misdirections, hidden files, glitch tests.
+- `/logs/` — personal dumps, half-code, half-brain.  
+- `/ops/` — pentest tools, notes, field intelligence.  
+- `/echo/` — thoughts that loop, then echo back.  
+- `/404/` — misdirections, hidden files, glitch tests.  
 - `/sandbox/` — broken things that still breathe.
 
 More folders will appear. Some will disappear.  

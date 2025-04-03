@@ -1,25 +1,50 @@
-# HyugaLog 🧠🔥
+# HyugaLog
 
-**HyugaLog** is a personal cyber journal crafted by a Red Teamer aprentice with a neurospicy edge.  
-It documents mindset, tools, field insights, and tactical thinking from a practical perspective — no fluff, no cringe, just pure signal.
-
-🔗 **Live version:** [https://88aleksandra88.github.io/HyugaLog/](https://88aleksandra88.github.io/HyugaLog/)
+> Welcome, operator.  
+> This isn’t a repo. This is a breach.
 
 ---
 
-## 🧩 What's Inside
+### 🧠 What is this?
 
-- ⚔️ Red Team & Blue Team reflections
-- 🧠 Cybersecurity tools breakdowns
-- 🧰 Hardware recommendations (with real field-tested machines)
-- 🕶️ Minimalist aesthetic (dark mode, no distractions)
-- 💬 Future articles on OSINT, mindset, and unconventional tactics
+HyugaLog is not a blog.  
+It’s not a project. It’s not a portfolio.  
+It’s a living logbook. A mental OS.  
+Fragments. Scripts. Ghosts. Reflections. Commands. Crashes.
+
+Some call it “weird”. Others get pulled in.  
+You're not here by accident.  
+You're just... tracing the source.
 
 ---
 
-## 🚀 How to use
+### 🌀 What's in the vortex?
 
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/88aleksandra88/HyugaLog.git
-   cd HyugaLog
+- `/logs/` — personal dumps, half-code, half-brain.
+- `/ops/` — pentest tools, notes, field intelligence.
+- `/echo/` — thoughts that loop, then echo back.
+- `/404/` — misdirections, hidden files, glitch tests.
+- `/sandbox/` — broken things that still breathe.
+
+More folders will appear. Some will disappear.  
+Don’t expect a roadmap. Expect recursion.
+
+---
+
+### ⚠️ Warning
+
+This is **not optimized**.  
+Not structured for you.  
+Not explained.  
+And still... it might feel like home.
+
+---
+
+### 🛠 Stay tuned
+
+HyugaLog is growing. Shifting. Becoming.  
+This is only the surface.  
+What you're reading is just the boot sector.
+
+**The system is live.**  
+And it’s not done logging yet.

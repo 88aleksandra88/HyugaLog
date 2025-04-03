@@ -8,20 +8,8 @@
       background: #000;
       color: #00ff88;
       font-family: monospace;
-      font-size: 1em;
       margin: 0;
       overflow: hidden;
-    }
-
-    #terminal {
-      padding: 2em;
-      white-space: pre-wrap;
-      animation: flicker 0.1s infinite alternate;
-    }
-
-    @keyframes flicker {
-      0% { opacity: 0.95; }
-      100% { opacity: 1; }
     }
 
     .static {
@@ -33,6 +21,43 @@
       opacity: 0.08;
       z-index: 0;
     }
+
+    #terminal {
+      position: absolute;
+      white-space: pre-wrap;
+      font-size: 1em;
+      z-index: 1;
+      animation: float 20s infinite ease-in-out alternate;
+    }
+
+    @keyframes float {
+      0% {
+        top: 10%;
+        left: 5%;
+        transform: rotate(0deg);
+      }
+      25% {
+        top: 20%;
+        left: 60%;
+        transform: rotate(-1deg);
+      }
+      50% {
+        top: 50%;
+        left: 30%;
+        transform: rotate(1deg);
+      }
+      75% {
+        top: 60%;
+        left: 70%;
+        transform: rotate(-2deg);
+      }
+      100% {
+        top: 30%;
+        left: 10%;
+        transform: rotate(0.5deg);
+      }
+    }
+
   </style>
 </head>
 <body>

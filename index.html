@@ -58,6 +58,8 @@
       type();
       setRandomQuote();
     };
+
+    
   
     // Random quote logic
     function setRandomQuote() {
@@ -104,7 +106,46 @@
     setRandomQuote(); // Si tu utilises toujours les quotes
   };
   </script>
-  
+  <!-- 🔘 Mysterious Button -->
+<style>
+  #chaosBtn {
+    position: absolute;
+    padding: 8px 14px;
+    background: #00ff88;
+    color: #0e0e0e;
+    border: none;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 9999;
+    transition: transform 0.3s ease;
+  }
+
+  #chaosBtn:hover {
+    transform: scale(1.1);
+  }
+</style>
+
+<script>
+  // Create and place the button at random position
+  function spawnChaosBtn() {
+    const btn = document.createElement("button");
+    btn.id = "chaosBtn";
+    btn.innerText = "???";
+    btn.onclick = () => {
+      window.location.href = "glitch.html"; // 👉 vers la page mystérieuse
+    };
+    document.body.appendChild(btn);
+
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+    btn.style.left = `${x}px`;
+    btn.style.top = `${y}px`;
+  }
+
+  window.addEventListener("load", spawnChaosBtn);
+</script>
+
   
   </body>
 </html>

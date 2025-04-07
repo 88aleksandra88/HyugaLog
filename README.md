@@ -2,7 +2,7 @@
 
 > Welcome, operator.  
 > You just stepped into something else.  
-> 👉 [Enter the log](https://88aleksandra88.github.io/HyugaLog/)
+> 👉 [Enter the log](https://hyugared.github.io/HyugaLog/)
 
 ---
 

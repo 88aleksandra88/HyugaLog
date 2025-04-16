@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nmap Network Discovery – HyugaLog</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>HyugaLog</h1>
+    <p><i>Nmap Network Discovery – Seeing the Matrix</i></p>
+  </header>
+  <main>
+    <article>
+      <h1>Nmap Recon Guide: How to See the Machines Around You</h1>
+
+      <p>If you're on a Red Team mission — even a simulated one — your first task is simple: <strong>see the invisible</strong>. Before touching a port or probing a service, you need to know what's around. Here's how to do that with one of Kali Linux's most powerful tools: <code>nmap</code>.</p>
+
+      <h2>🎯 Objective: Discover All Active Devices on a Network</h2>
+      <p>Imagine you're dropped into a network with no map, no beacon, just your instincts and tools. You don’t know who's there — but you need to.</p>
+      <p><strong>Nmap</strong> can scan your local environment and list all live machines: laptops, smartphones, routers, IoT devices, you name it.</p>
+
+      <h2>🧠 Step 1 – Know Your Own IP and Subnet</h2>
+      <pre><code>ip a</code></pre>
+      <p>Look for a line like:</p>
+      <pre><code>inet 192.168.1.23/24</code></pre>
+      <p>This means your IP is <code>192.168.1.23</code> and your subnet is <code>/24</code>, aka <code>192.168.1.0 - 192.168.1.255</code>.</p>
+
+      <h2>📡 Understanding Hosts, Ports & Services</h2>
+
+      <h3>🧍 Host</h3>
+      <p>A host is any machine connected to the network — a PC, a smartphone, a printer, or even a smart lightbulb. Each host has an IP address on the network (like <code>192.168.1.42</code>).</p>
+
+      <h3>🔌 Ports</h3>
+      <p>A port is like a virtual door on a host. It's where services run and communicate. Ports are numbered from 0 to 65535. Some common ones:</p>
+      <ul>
+        <li><strong>22</strong> – SSH (remote login)</li>
+        <li><strong>80</strong> – HTTP (web server)</li>
+        <li><strong>443</strong> – HTTPS (secure web)</li>
+        <li><strong>21</strong> – FTP (file transfer)</li>
+        <li><strong>3389</strong> – RDP (Windows remote desktop)</li>
+      </ul>
+      <p>Ports can be:</p>
+      <ul>
+        <li><strong>Open</strong> – service is listening</li>
+        <li><strong>Closed</strong> – nothing is there</li>
+        <li><strong>Filtered</strong> – blocked by firewall or security tool</li>
+      </ul>
+
+      <h3>⚙️ Services</h3>
+      <p>A service is the actual software running behind a port. For example:</p>
+      <ul>
+        <li>Port 22 might run <strong>OpenSSH</strong></li>
+        <li>Port 80 could be <strong>Apache</strong> or <strong>Nginx</strong></li>
+      </ul>
+      <p>Nmap doesn't just detect ports — it can identify the service and sometimes its version (<code>Apache 2.4.41</code> for example).</p>
+
+      <h2>🛰️ Step 2 – Ping Scan the Whole Network</h2>
+      <pre><code>nmap -sn 192.168.1.0/24</code></pre>
+      <p>This will send ping requests to all 254 possible hosts. You'll get a list of machines that respond.</p>
+
+      <h2>📦 Output Example</h2>
+      <pre><code>Nmap scan report for 192.168.1.1 (Router)
+Host is up.
+Nmap scan report for 192.168.1.42 (Ubuntu-MSI)
+Host is up.
+Nmap scan report for 192.168.1.74
+Host is up.</code></pre>
+
+      <h2>🧩 Step 3 – Scan Detected Hosts One by One</h2>
+      <p>Once you identify IPs, scan their ports and services:</p>
+      <pre><code>nmap -sV -O 192.168.1.42</code></pre>
+      <p>This reveals what the device is running — HTTP server, SSH, Samba, RDP, etc. Even OS fingerprinting.</p>
+
+      <h2>📂 Optional: Save Results for Logs</h2>
+      <pre><code>nmap -sn 192.168.1.0/24 -oN scan_results.txt</code></pre>
+      <p>You can integrate the output into HyugaLog or a Red Team report later.</p>
+
+      <h2>🛡️ Use Case – Red Team Simulation</h2>
+      <ul>
+        <li>You've breached a network but need passive intel first</li>
+        <li>You're training OSINT and need to map a lab network</li>
+        <li>You want to alert a team on how visible their devices are</li>
+      </ul>
+
+      <h2>⚠️ Ethics Reminder</h2>
+      <p><strong>Never scan networks you don’t own or have explicit permission to test.</strong></p>
+      <p>Nmap is powerful, but with great power comes operational responsibility.</p>
+
+      <h2>📌 Final Note</h2>
+      <p>Scanning is not just technical. It's psychological. You're not looking at machines — you're reading a system's posture, assumptions, weaknesses. You're entering someone else's territory. Map it well.</p>
+
+      <p><em>– Hyuga</em></p>
+    </article>
+  </main>
+</body>
+</html>

@@ -72,9 +72,28 @@ Host is up.</code></pre>
       <pre><code>nmap -sV -O 192.168.1.42</code></pre>
       <p>This reveals what the device is running — HTTP server, SSH, Samba, RDP, etc. Even OS fingerprinting.</p>
 
+      <h2>🧨 Extra Recon Commands You Should Know</h2>
+      <ul>
+        <li><code>nmap -sS -T4 192.168.1.42</code> – stealth SYN scan, faster and less noisy</li>
+        <li><code>nmap --top-ports 100 192.168.1.42</code> – scan only top 100 commonly used ports</li>
+        <li><code>nmap -Pn 192.168.1.42</code> – skip ping check if host appears down</li>
+        <li><code>nmap -p- 192.168.1.42</code> – full port scan (all 65535 ports)</li>
+        <li><code>nmap -sV --script vuln 192.168.1.42</code> – scan for known vulnerabilities (slow but powerful)</li>
+      </ul>
+
+      <h2>🧰 After Nmap – What Can You Do With The Info?</h2>
+      <ul>
+        <li><strong>SSH detected?</strong> → Try brute force with <code>hydra</code> or analyze the banner</li>
+        <li><strong>Web server found?</strong> → Use <code>gobuster</code>, <code>nikto</code> or <code>whatweb</code></li>
+        <li><strong>SMB/NetBIOS open?</strong> → Try <code>smbclient</code>, <code>enum4linux</code>, or <code>crackmapexec</code></li>
+        <li><strong>RDP (3389)?</strong> → Try <code>ncrack</code>, <code>xfreerdp</code> or look for weak configs</li>
+        <li><strong>FTP (21)?</strong> → Check for anonymous login, misconfigurations</li>
+      </ul>
+      <p>Everything Nmap tells you should be seen as a potential branch to explore. Each open service is a path — a possibility.</p>
+
       <h2>📂 Optional: Save Results for Logs</h2>
-      <pre><code>nmap -sn 192.168.1.0/24 -oN scan_results.txt</code></pre>
-      <p>You can integrate the output into HyugaLog or a Red Team report later.</p>
+      <pre><code>nmap -sV -O 192.168.1.42 -oN hyuga-scan.txt</code></pre>
+      <p>You can integrate the output into a Log or use it for professional reporting.</p>
 
       <h2>🛡️ Use Case – Red Team Simulation</h2>
       <ul>

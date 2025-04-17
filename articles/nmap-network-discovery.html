@@ -2,64 +2,87 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Nmap Network Discovery – HyugaLog</title>
+  <title>Tunnel Vision vs Landscape Scan – HyugaLog</title>
   <link rel="stylesheet" href="../assets/css/style.css" />
 </head>
 <body>
   <header>
     <h1>HyugaLog</h1>
-    <p><i>Nmap Network Discovery – Seeing the Matrix</i></p>
+    <p><i>Tunnel Vision vs Landscape Scan – Learning Nmap the Right Way</i></p>
   </header>
   <main>
     <article>
-      <h1>Nmap Recon Guide: How to See the Machines Around You</h1>
+      <h1>Nmap Recon Guide: Tunnel Vision vs Landscape Scan</h1>
 
-      <p>If you're on a Red Team mission — even a simulated one — your first task is simple: <strong>see the invisible</strong>. Before touching a port or probing a service, you need to know what's around. Here's how to do that with one of Kali Linux's most powerful tools: <code>nmap</code>.</p>
+      <p>If you're on a Red Team mission — even a simulated one — you need to see what others can't. Sometimes that means scanning the entire battlefield. Sometimes it means focusing on a single sentry. In this article, we break down the two mindsets that every Nmap user must master: <strong>targeted reconnaissance</strong> and <strong>environmental mapping</strong>.</p>
 
-      <h2>🎯 Objective: Discover All Active Devices on a Network</h2>
-      <p>Imagine you're dropped into a network with no map, no beacon, just your instincts and tools. You don’t know who's there — but you need to.</p>
-      <p><strong>Nmap</strong> can scan your local environment and list all live machines: laptops, smartphones, routers, IoT devices, you name it.</p>
+      <h2>🌪️ PART 1 — Tunnel Vision: Targeted Scanning</h2>
+      <p>Imagine you already know the IP of a machine — maybe it's a second PC at home, a test server, or an IoT device. Your job now is to go deep, not wide.</p>
 
-      <h2>🧠 Step 1 – Know Your Own IP and Subnet</h2>
+      <h3>🧭 Step 1 – Find the Target IP</h3>
+      <p>On the machine you want to scan, use the following command to find its IP address:</p>
       <pre><code>ip a</code></pre>
       <p>Look for a line like:</p>
-      <pre><code>inet 192.168.1.23/24</code></pre>
-      <p>This means your IP is <code>192.168.1.23</code> and your subnet is <code>/24</code>, aka <code>192.168.1.0 - 192.168.1.255</code>.</p>
+      <pre><code>inet 192.168.1.42/24</code></pre>
+      <p>This means the machine's IP is <code>192.168.1.42</code>. Make sure the machine is on the same network as yours so you can reach it.</p>
 
-      <h2>📡 Understanding Hosts, Ports & Services</h2>
-
-      <h3>🧍 Host</h3>
-      <p>A host is any machine connected to the network — a PC, a smartphone, a printer, or even a smart lightbulb. Each host has an IP address on the network (like <code>192.168.1.42</code>).</p>
-
-      <h3>🔌 Ports</h3>
-      <p>A port is like a virtual door on a host. It's where services run and communicate. Ports are numbered from 0 to 65535. Some common ones:</p>
+      <h3>🔌 Optional Lab Setup</h3>
+      <p>If you're learning, the easiest way to simulate this is to:</p>
       <ul>
-        <li><strong>22</strong> – SSH (remote login)</li>
-        <li><strong>80</strong> – HTTP (web server)</li>
-        <li><strong>443</strong> – HTTPS (secure web)</li>
-        <li><strong>21</strong> – FTP (file transfer)</li>
-        <li><strong>3389</strong> – RDP (Windows remote desktop)</li>
+        <li>Run a second VM (e.g., Ubuntu or Metasploitable) on the same host network</li>
+        <li>Use <code>ip a</code> inside that VM to get its IP</li>
+        <li>Scan it from your main system using its local IP</li>
+      </ul>
+      <p>This helps you practice scans in a safe and isolated environment.</p>
+
+      <h3>🔍 Step 2 – Launch a Focused Scan</h3>
+      <pre><code>nmap -sC -sV -O -Pn 192.168.1.42</code></pre>
+      <ul>
+        <li><code>-sC</code>: run default scripts</li>
+        <li><code>-sV</code>: detect service versions</li>
+        <li><code>-O</code>: attempt OS detection</li>
+        <li><code>-Pn</code>: skip host discovery (assume host is up)</li>
+      </ul>
+      <p>This reveals open ports, services, software versions, and possible OS fingerprinting. It's the sniper approach — you're focused on a single target.</p>
+
+      <h3>📡 Understanding Hosts, Ports & Services</h3>
+
+      <h4>🧍 Host</h4>
+      <p>A host is any device connected to the network — PC, smartphone, printer, or smart lightbulb. Each has an IP address (e.g., <code>192.168.1.42</code>).</p>
+
+      <h4>🔌 Ports</h4>
+      <p>Ports are virtual doors used by services and applications to communicate over the network. Here are a few commonly found ones:</p>
+      <ul>
+        <li><strong>22 – SSH (Secure Shell):</strong> Remote administration and login for Unix/Linux systems. If open, can be a target for brute-force login attempts.</li>
+        <li><strong>80 – HTTP:</strong> Unencrypted web traffic. Might host a public or internal site. Could be vulnerable to directory traversal or outdated CMS issues.</li>
+        <li><strong>443 – HTTPS:</strong> Secure web traffic. Always worth checking with tools like <code>sslscan</code> or <code>whatweb</code> to identify cert misconfigs or tech stack.</li>
+        <li><strong>21 – FTP (File Transfer Protocol):</strong> Used for file transfers. Weaknesses include anonymous login, cleartext credentials, and misconfigurations.</li>
+        <li><strong>3389 – RDP (Remote Desktop Protocol):</strong> Used for remote access to Windows systems. If exposed, it can be a major attack vector.</li>
       </ul>
       <p>Ports can be:</p>
       <ul>
-        <li><strong>Open</strong> – service is listening</li>
-        <li><strong>Closed</strong> – nothing is there</li>
-        <li><strong>Filtered</strong> – blocked by firewall or security tool</li>
+        <li><strong>Open</strong> – the service is available and accepting connections</li>
+        <li><strong>Closed</strong> – nothing is listening on that port</li>
+        <li><strong>Filtered</strong> – traffic is being blocked (e.g., by a firewall or IDS)</li>
       </ul>
 
-      <h3>⚙️ Services</h3>
-      <p>A service is the actual software running behind a port. For example:</p>
-      <ul>
-        <li>Port 22 might run <strong>OpenSSH</strong></li>
-        <li>Port 80 could be <strong>Apache</strong> or <strong>Nginx</strong></li>
-      </ul>
-      <p>Nmap doesn't just detect ports — it can identify the service and sometimes its version (<code>Apache 2.4.41</code> for example).</p>
+      <h4>⚙️ Services</h4>
+      <p>Nmap can detect services running behind open ports. This includes software names and often their versions, e.g., <code>Apache 2.4.41</code>, <code>OpenSSH 7.9</code>, etc. This is critical for vulnerability research.</p>
 
-      <h2>🛰️ Step 2 – Ping Scan the Whole Network</h2>
+      <h2>🌍 PART 2 — Landscape Scan: Network Reconnaissance</h2>
+      <p>Other times, you're blind in a new environment. You need situational awareness.</p>
+
+      <h3>🧭 Step 1 – Find Your IP and Subnet</h3>
+      <p>To scan your network, you first need to know your local IP and subnet:</p>
+      <pre><code>ip a</code></pre>
+      <p>Look for a line like:</p>
+      <pre><code>inet 192.168.1.23/24</code></pre>
+      <p>This tells you your IP is <code>192.168.1.23</code> and your subnet is <code>/24</code>, so the network range is <code>192.168.1.0/24</code>.</p>
+
+      <h3>🔍 Step 2 – Ping the Entire Network</h3>
+      <p>Once you know the subnet, scan to find live hosts:</p>
       <pre><code>nmap -sn 192.168.1.0/24</code></pre>
-      <p>This will send ping requests to all 254 possible hosts. You'll get a list of machines that respond.</p>
-
-      <h2>📦 Output Example</h2>
+      <p>This ping scans the subnet to find live hosts. Sample output:</p>
       <pre><code>Nmap scan report for 192.168.1.1 (Router)
 Host is up.
 Nmap scan report for 192.168.1.42 (Ubuntu-MSI)
@@ -67,47 +90,57 @@ Host is up.
 Nmap scan report for 192.168.1.74
 Host is up.</code></pre>
 
-      <h2>🧩 Step 3 – Scan Detected Hosts One by One</h2>
-      <p>Once you identify IPs, scan their ports and services:</p>
-      <pre><code>nmap -sV -O 192.168.1.42</code></pre>
-      <p>This reveals what the device is running — HTTP server, SSH, Samba, RDP, etc. Even OS fingerprinting.</p>
+      <p>Once hosts are identified, zoom in:</p>
+      <pre><code>nmap -sC -sV -O -Pn 192.168.1.42</code></pre>
 
-      <h2>🧨 Extra Recon Commands You Should Know</h2>
+      <h2>🧠 Strategy Breakdown</h2>
+      <p><strong>Tunnel Vision</strong> = deep recon on a known IP. Use when your target is precise and valuable.</p>
+      <p><strong>Landscape Scan</strong> = broad awareness. Use to discover hidden assets and understand the terrain.</p>
+
+      <h2>🧨 Bonus: Advanced Nmap Tips</h2>
       <ul>
-        <li><code>nmap -sS -T4 192.168.1.42</code> – stealth SYN scan, faster and less noisy</li>
-        <li><code>nmap --top-ports 100 192.168.1.42</code> – scan only top 100 commonly used ports</li>
-        <li><code>nmap -Pn 192.168.1.42</code> – skip ping check if host appears down</li>
-        <li><code>nmap -p- 192.168.1.42</code> – full port scan (all 65535 ports)</li>
-        <li><code>nmap -sV --script vuln 192.168.1.42</code> – scan for known vulnerabilities (slow but powerful)</li>
+        <li><code>nmap -sS -T4 192.168.1.42</code> – stealth SYN scan</li>
+        <li><code>nmap --top-ports 100 192.168.1.42</code> – scan top 100 ports</li>
+        <li><code>nmap -p- 192.168.1.42</code> – full port scan</li>
+        <li><code>nmap -sV --script vuln 192.168.1.42</code> – detect known vulns</li>
       </ul>
 
-      <h2>🧰 After Nmap – What Can You Do With The Info?</h2>
+      <h2>🧰 What to Do With Results</h2>
       <ul>
-        <li><strong>SSH detected?</strong> → Try brute force with <code>hydra</code> or analyze the banner</li>
-        <li><strong>Web server found?</strong> → Use <code>gobuster</code>, <code>nikto</code> or <code>whatweb</code></li>
-        <li><strong>SMB/NetBIOS open?</strong> → Try <code>smbclient</code>, <code>enum4linux</code>, or <code>crackmapexec</code></li>
-        <li><strong>RDP (3389)?</strong> → Try <code>ncrack</code>, <code>xfreerdp</code> or look for weak configs</li>
-        <li><strong>FTP (21)?</strong> → Check for anonymous login, misconfigurations</li>
+        <li><strong>SSH open?</strong> → try brute force with <code>hydra</code></li>
+        <li><strong>Web server?</strong> → scan with <code>gobuster</code>, <code>nikto</code></li>
+        <li><strong>SMB?</strong> → explore with <code>enum4linux</code>, <code>crackmapexec</code></li>
       </ul>
-      <p>Everything Nmap tells you should be seen as a potential branch to explore. Each open service is a path — a possibility.</p>
 
-      <h2>📂 Optional: Save Results for Logs</h2>
+      <h2>📂 Save Your Scan</h2>
       <pre><code>nmap -sV -O 192.168.1.42 -oN hyuga-scan.txt</code></pre>
-      <p>You can integrate the output into a Log or use it for professional reporting.</p>
 
-      <h2>🛡️ Use Case – Red Team Simulation</h2>
+      <h2>📌 Final Advice</h2>
+      <p>Start wide, go deep. One gives you the map. The other, the secret doors.</p>
+
+      <h2>🧪 Try This – Your First Recon Challenge</h2>
       <ul>
-        <li>You've breached a network but need passive intel first</li>
-        <li>You're training OSINT and need to map a lab network</li>
-        <li>You want to alert a team on how visible their devices are</li>
+        <li>Spin up a second VM on your network (e.g., Metasploitable, Parrot, or Kali)</li>
+        <li>Find its IP address using <code>ip a</code></li>
+        <li>From your main system, run a full port scan with service detection:</li>
+      </ul>
+      <pre><code>nmap -sC -sV -O -Pn [target-ip]</code></pre>
+      <p>Try to interpret what services are running. What ports are open? Is there a potential weakness?</p>
+
+      <h2>📌 Nmap Cheat Sheet</h2>
+      <ul>
+        <li><code>nmap -sn [range]</code> – Ping scan (host discovery)</li>
+        <li><code>nmap -sC -sV [ip]</code> – Default scripts + service versions</li>
+        <li><code>nmap -O [ip]</code> – OS detection</li>
+        <li><code>nmap -Pn [ip]</code> – Skip ping check</li>
+        <li><code>nmap -p- [ip]</code> – All ports (1–65535)</li>
+        <li><code>nmap --top-ports 100 [ip]</code> – Most common 100 ports</li>
+        <li><code>nmap -sV --script vuln [ip]</code> – Known vulnerabilities</li>
+        <li><code>nmap -oN output.txt</code> – Save to file</li>
       </ul>
 
       <h2>⚠️ Ethics Reminder</h2>
-      <p><strong>Never scan networks you don’t own or have explicit permission to test.</strong></p>
-      <p>Nmap is powerful, but with great power comes operational responsibility.</p>
-
-      <h2>📌 Final Note</h2>
-      <p>Scanning is not just technical. It's psychological. You're not looking at machines — you're reading a system's posture, assumptions, weaknesses. You're entering someone else's territory. Map it well.</p>
+      <p><strong>Only scan networks you are authorized to analyze.</strong></p>
 
       <p><em>– Hyuga</em></p>
     </article>
